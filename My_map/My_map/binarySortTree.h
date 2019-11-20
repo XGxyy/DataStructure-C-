@@ -19,6 +19,13 @@ public:
 template<class T>
 class BinarySortTree{
 	TreeNode<T>* m_root;
+	void destory(){
+		if (m_root){
+			TreeNode<T>* tmp = m_root;
+			m_root = m_root->m_right;
+			delete(m_root);
+		}
+	}
 public:
 	BinarySortTree() :
 		m_root(nullptr){}
@@ -184,6 +191,9 @@ public:
 			delete cur;
 		}
 #endif
+	}
+	~BinarySortTree(){
+		destory();
 	}
 };
 }
